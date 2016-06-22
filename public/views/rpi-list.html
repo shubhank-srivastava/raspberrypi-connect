@@ -1,0 +1,23 @@
+<section ng-controller="RpiCtrl">
+    <div ng-hide="loader">
+        <br>
+        <div class="pull-left"><img src="public/img/pi_logo.png" width="70"/><span class="title">PICONNECT</span></div>
+        <div class="pull-right"><a href="/new-device"><button class="btn btn-lg btn-default">New Device</button></a></div>
+        <br>
+        <table class="table table-bordered table-condensed">
+            <tr>
+                <th>No.</th>
+                <th>Username</th>
+                <th>IP</th>
+                <th>Terminal</th>
+            </tr>
+            <tr ng-repeat="pi in pis" ng-class="pi.socketid==null?'':'danger'" style="background-color:white;">
+                <td>{{$index+1}}</td>
+                <td>{{pi.username}}</td>
+                <td>{{pi.remoteAddress}}</td>
+                <td><a href="/terminal/{{pi.remoteAddress}}"><button class="btn btn-primary" ng-disabled="pi.socketid!=null">Connect</button></a></td>
+            </tr>
+        </table>
+    </div>
+    <h5 class="text-center" data-ng-if="loader"><img src="public/img/loader.gif"></h5>
+</section>

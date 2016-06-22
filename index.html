@@ -1,0 +1,25 @@
+<html ng-app="piweb">
+<head>
+    <title>
+        PIweb
+    </title>
+    <base href="/">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Play:700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="public/css/app.css"/>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/term/src/term.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="public/js/app.js"></script>
+    <style>
+        body{background-color: #f1f1f1;}
+        .title{
+            font-family:'Stencil','Play', sans-serif;;font-size:60px;vertical-align:middle;
+        }
+    </style>
+</head>
+<body class="container">
+    <div ng-view></div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+TO REPLACE Nth LINE
+sed -i 'Ns/.*/replacement-line/' file.txt
+sed 'Ns/.*/replacement-line/' file.txt > new_file.txt
+
+APPEND A LINE AFTER Nth LINE
+sed -i 'N a <LINE-TO-BE-ADDED>' FILE.txt
+
+APPEND A LINE AFTER LAST LINE
+sed -i '$ a This is the last line' sedtest.txt
+
+DELETE Nth line
+sed 'Nd' file
+
+DELETE RANGE OF LINES
+sed '2,4d' file

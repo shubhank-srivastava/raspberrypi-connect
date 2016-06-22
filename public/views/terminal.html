@@ -1,0 +1,17 @@
+<section ng-controller="terminalCtrl">
+	<div class="side-panel" ng-show="show_file">
+		<span class="glyphicon glyphicon-remove-circle pull-right" style="font-size:30px;cursor:pointer;" ng-click="hideFile()"></span>
+        <h2>{{file_name}} <span ng-show="loading_file">: loading...</span></h2>
+        <textarea style="max-height:75%;" rows="25" cols="65" id="file_contents"></textarea>
+        <br>
+        <button class="btn btn-primary" ng-click="saveFile()">Save Changes</button>
+	</div> 
+    <br>
+    <div style="padding:10px;background-color:black;">
+    	<div id="content"></div>
+    </div>
+    <br>
+    <input type="text" class="form-control" ng-keydown="enter($event)" ng-model="cmd">
+    <br>
+    <button class="btn btn-default" ng-click="close_terminal()">Close Terminal</button>
+</section>

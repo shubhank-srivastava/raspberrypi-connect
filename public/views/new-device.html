@@ -1,0 +1,48 @@
+<section ng-controller="NewDeviceCtrl">
+    <h3>Enter details for a new PI Device</h3>
+    <form class="form" name="form" ng-submit="register(form)" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-success': form.username.$valid && submitted,
+                                            'has-error': form.username.$invalid && submitted }">
+          <label>User Name</label>
+
+          <input type="text" name="username" class="form-control" ng-model="user.username"
+                 required mongoose-error/>
+          <p class="help-block" ng-show="form.username.$error.required && submitted">
+            What's your user name?
+          </p>
+          <p class="help-block" ng-show="form.username.$error.mongoose">
+            {{ errors.username }}
+          </p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
+                                            'has-error': form.password.$invalid && submitted }">
+          <label>Password</label>
+
+          <input type="password" name="password" class="form-control" ng-model="user.password"
+                 ng-minlength="6"
+                 required
+                 mongoose-error/>
+          <p class="help-block"
+             ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
+            Password must be at least 6 characters.
+          </p>
+          <p class="help-block" ng-show="form.password.$error.mongoose">
+            {{ errors.password }}
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+            Sign up
+          </button>
+          <a href="/">
+              <button class="btn btn-lg btn-default" type="button">
+                Go Back
+              </button>
+          </a>
+        </div>
+    </form>
+    <br><br>
+    <div ng-if="script">Generated script:<code>{{script}}</code></div>
+</section>

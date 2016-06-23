@@ -2,8 +2,8 @@ var net = require('net');
 var pty = require('pty.js');
 var dns = require('dns');
 
-var HOST = '54.169.1.192';
-var PORT = 55555;
+var HOST = '192.168.0.109';
+var PORT = 8000;
 
 var USERNAME='shubhank';
 var PASSWORD='shubhank';

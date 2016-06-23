@@ -6,10 +6,10 @@
 module.exports = {
   // MongoDB connection options
 	mongo: {
-		uri: 'mongodb://shubhank:shubhank@ds021462.mlab.com:21462/raspberrypi'
+		uri: 'mongodb://localhost'
 	},
 
-	HOST : '172.31.17.187',
+	HOST : 'localhost',
 	
 	PORT : 55555,
 

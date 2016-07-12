@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/'));
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoose = require('mongoose');
-var Customer = require('./server/customer.model');
+var Device = require('./server/device.model');
 if(!process.env.NODE_ENV) process.env.NODE_ENV = 'local'; 
 var config = require('./config/'+process.env.NODE_ENV+'.js');
 http.listen(config.HTTP_PORT);
@@ -31,14 +31,14 @@ net.createServer(function(sock) {
         if(!RPI[sock.remoteAddress]){
             if(data.toString().indexOf('auth')==0){
                 var auth = data.toString().split(" ");
-                Customer.findOne({username: auth[1]}, function(err, customer){
+                Device.findOne({username: auth[1]}, function(err, device){
                     if(err){
                         console.log(err);
                         sock.end();
-                    }if(!customer){
+                    }if(!device){
                         console.log("username doesn't exist.");
                         sock.end();
-                    }else if(!customer.authenticate(auth[2])){
+                    }else if(!device.authenticate(auth[2])){
                         console.log("password failed for username:"+auth[1]);
                         sock.end();
                     }else{
@@ -154,8 +154,8 @@ app.get('/api/pi', function(req, res){
 
 var fs = require('fs');
 app.post('/api/user', function(req, res){
-    var newCustomer = new Customer(req.body);
-    newCustomer.save(function(err, user) {
+    var newDevice = new Device(req.body);
+    newDevice.save(function(err, user) {
         if (err){
             console.log(err);
             res.status(422).json(err);

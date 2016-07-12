@@ -6,13 +6,13 @@
 module.exports = {
   // MongoDB connection options
 	mongo: {
-		uri: 'mongodb://localhost'
+		uri: process.env.MONGOLAB_URI
 	},
 
-	HOST : 'localhost',
+	HOST : process.env.HOST,
 	
-	PORT : 55555,
+	PORT : process.env.RPI_PORT,
 
-	HTTP_PORT: 60000
+	HTTP_PORT: process.env.HTTP_PORT
 };
 
